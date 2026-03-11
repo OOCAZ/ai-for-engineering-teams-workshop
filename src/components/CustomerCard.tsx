@@ -17,7 +17,7 @@ export default function CustomerCard({ customer, onClick }: CustomerCardProps) {
 
   return (
     <div
-      className="w-full max-w-xs rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm cursor-pointer hover:shadow-md transition-shadow"
+      className="w-full max-w-xs rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm cursor-pointer hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-gray-700 hover:-translate-y-0.5 transition-all duration-150"
       onClick={() => onClick?.(customer)}
       role="button"
       tabIndex={0}
