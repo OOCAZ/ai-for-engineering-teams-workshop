@@ -1,6 +1,6 @@
 import { Customer } from '@/data/mock-customers';
 
-interface CustomerCardProps {
+export interface CustomerCardProps {
   customer: Customer;
   onClick?: (customer: Customer) => void;
 }
@@ -17,7 +17,7 @@ export default function CustomerCard({ customer, onClick }: CustomerCardProps) {
 
   return (
     <div
-      className="w-full max-w-xs rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm cursor-pointer hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-gray-700 hover:-translate-y-0.5 transition-all duration-150"
+      className="w-full max-w-[400px] min-h-[120px] rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 p-4 shadow-sm cursor-pointer hover:shadow-lg hover:border-blue-400 dark:hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-gray-700 hover:-translate-y-0.5 transition-all duration-150"
       onClick={() => onClick?.(customer)}
       role="button"
       tabIndex={0}
@@ -27,11 +27,17 @@ export default function CustomerCard({ customer, onClick }: CustomerCardProps) {
         <div className="min-w-0">
           <p className="truncate font-semibold text-gray-900 dark:text-gray-100">{customer.name}</p>
           <p className="truncate text-sm text-gray-500 dark:text-gray-400">{customer.company}</p>
+          {customer.email && (
+            <p className="truncate text-xs text-gray-400 dark:text-gray-500">{customer.email}</p>
+          )}
         </div>
-        <div
-          className={`mt-1 h-3 w-3 flex-shrink-0 rounded-full ${color}`}
-          aria-label={`Health score: ${customer.healthScore} – ${label}`}
-        />
+        <div className="flex flex-col items-end flex-shrink-0 gap-0.5">
+          <div
+            className={`h-3 w-3 rounded-full ${color}`}
+            aria-label={`Health score: ${customer.healthScore} – ${label}`}
+          />
+          <span className="text-xs font-medium text-gray-500 dark:text-gray-400">{customer.healthScore}</span>
+        </div>
       </div>
 
       {domains.length > 0 && (
